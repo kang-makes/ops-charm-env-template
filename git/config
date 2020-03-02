@@ -1,0 +1,10 @@
+[user]
+  email = your@mail.tld
+  name = Insert Your Name
+  signingkey = 
+
+[commit]
+ 	gpgsign = true
+
+[tag]
+  forceSignAnnotated = true

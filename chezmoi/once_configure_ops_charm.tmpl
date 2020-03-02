@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo Downloading/updating ops-charm...
+
+mkdir -p "{{ .environments }}"
+
+if [ ! -d "{{ .environments }}/ops-charm" ]; then
+  git clone https://github.com/kangco-de/ops-charm {{ .environments }}/ops-charm
+else
+  (
+    cd "{{ .environments }}/ops-charm"
+    git fetch
+    git pull origin master
+  )
+fi
+
+(
+  export ENVIRONMENTS="{{ .environments }}"
+
+  source "{{ .environments }}/ops-charm/functions-global/ops-charm-loader"
+
+  mkvirtualenv ops-charm -r "{{ .environments }}/ops-charm/requirements.txt"
+  deactivate
+
+  mkvirtualenv {{ .defaultenv }} -r "{{ .environments }}/{{ .defaultenv }}/requirements.txt"
+  deactivate
+)

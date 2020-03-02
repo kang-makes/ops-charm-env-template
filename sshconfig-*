@@ -1,0 +1,5 @@
+Host github--template
+  UserKnownHostsFile ~/envs/template/known-hosts
+  Hostname github.com
+  IdentityFile ~/envs/template/rsa-pub--template
+  User git

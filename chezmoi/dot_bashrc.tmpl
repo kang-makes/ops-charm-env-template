@@ -1,0 +1,22 @@
+#
+# ~/.bashrc
+#
+
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+export ENVIRONMENTS="{{ .environments }}"
+
+for bash_function_file in $ENVIRONMENTS/*/functions-global/*; do
+  if [ -f "$bash_function_file" ]; then
+    source $bash_function_file
+  fi
+done
+
+for executables_folder in $HOME/go/bin $HOME/.local/bin $ENVIRONMENTS/*/bin-global; do
+  if [ -d "$executables_folder" ]; then
+    export PATH=$executables_folder:$PATH
+  fi
+done

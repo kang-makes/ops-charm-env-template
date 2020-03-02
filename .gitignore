@@ -1,0 +1,15 @@
+/include
+/lib
+/bin/*
+!/bin/preactivate
+!/bin/predeactivate
+!/bin/postactivate
+!/bin/postdeactivate
+
+/gnupg/*
+!/gnupg/gpg-agent.conf
+!/gnupg/sshcontrol
+
+__pycache__
+*.pyc
+
